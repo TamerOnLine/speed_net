@@ -1,7 +1,2 @@
-pytest
-python-dotenv
-requests
-langchain-community
-langchain-ollama
-langchain_ollama
+speedtest-cli
 
