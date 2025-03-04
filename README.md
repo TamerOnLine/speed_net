@@ -1,62 +1,31 @@
-
-# venv
+# TamerOnline Speed Net
 
 ## Overview
-`venv` is an automated virtual environment setup tool designed to streamline development across Windows, Linux, and macOS. It ensures dependencies are managed efficiently and integrates seamlessly with VS Code.
-
-## 🖼 Screenshots
-![Virtual environment activation](img/screenshot.png)
+TamerOnline Speed Net is a Python-based internet speed test tool that automates speed measurements and stores the results in an SQLite database. The project supports cross-platform virtual environment setup and integrates seamlessly with VS Code.
 
 ## Features
-- **Cross-platform compatibility**: Supports Windows (`.bat`, `.ps1`), Linux (`.sh`), and macOS.
-- **Automated environment setup**: Detects Python installation, creates, and activates a virtual environment.
-- **Dependency management**: Installs packages from `requirements.txt` and ensures `pip` is up-to-date.
-- **VS Code integration**: Includes a `.code-workspace` file for streamlined project management.
+- **Cross-platform compatibility**: Works on Windows, Linux, and macOS.
+- **Automated virtual environment setup**: Easily create and activate a Python virtual environment.
+- **Internet speed test**: Measures download speed, upload speed, and ping.
+- **Results storage**: Saves test results in an SQLite database.
+- **Command-line execution**: Run tests with a simple command.
+- **Unit Testing**: Includes test cases to validate database functionality.
 
 ## Prerequisites
 - **Python 3.6+** installed.
+- **Git (optional)** for cloning the repository.
 - **VS Code (optional)** for an optimized development experience.
 
 ## Installation and Setup
-### Windows
-#### Using Command Prompt:
-```cmd
-cd path/to/venv
-activate_project.bat
-```
-#### Using PowerShell:
-```powershell
-cd path/to/venv
-.\activate_project.ps1
+
+### Clone the Repository
+Ensure Git is installed and clone the project:
+```bash
+git clone https://github.com/TamerOnLine/speed_net.git
+cd speed_net
 ```
 
-### Linux/macOS
-```bash
-cd path/to/venv
-chmod +x activate_project.sh
-./activate_project.sh
-```
-
-## Cloning the Repository
-Ensure Git is installed:
-```bash
-git --version
-```
-Clone the repository:
-```bash
-git clone https://github.com/TamerOnLine/venv.git
-```
-For SSH access:
-```bash
-git clone git@github.com:TamerOnLine/venv.git
-```
-Navigate to the project directory:
-```bash
-cd venv
-```
-
-## Setting Up the Virtual Environment
-Run the activation script for your OS:
+### Setting Up the Virtual Environment
 #### Windows (Command Prompt):
 ```cmd
 activate_project.bat
@@ -71,49 +40,53 @@ chmod +x activate_project.sh
 ./activate_project.sh
 ```
 
-## Installing Dependencies
+### Installing Dependencies
 After activating the virtual environment:
 ```bash
 pip install -r requirements.txt
 ```
 
+## Running the Speed Test
+To execute the speed test, run:
+```bash
+python src/main.py
+```
+This will measure your internet speed and store the results in `speed_results.db`.
+
+## Viewing Previous Test Results
+To retrieve the last 5 speed test results:
+```bash
+python src/main.py
+```
+The output will display previous test results, including download speed, upload speed, ping, and timestamp.
+
 ## File Structure
 ```
-venv/
-├── .github/                 # GitHub workflows and CI/CD
-├── .pytest_cache/           # Pytest cache for test runs
-├── img/                     # Image assets (if applicable)
+tameronline-speed_net/
+├── .github/                 # GitHub workflows
+├── img/                     # Image assets
 ├── src/                     # Source code
-├── tests/                   # Test scripts
-├── venv/                    # Virtual environment folder
-├── .env                     # Environment variables
-├── .gitignore               # Git ignore rules
-├── activate_project.bat     # Windows CMD script
-├── activate_project.ps1     # Windows PowerShell script
-├── activate_project.sh      # Linux/macOS Bash script
+│   ├── __init__.py          # Init file for Python package
+│   ├── main.py              # Speed test script
+│   └── runner.py            # Script runner
+├── tests/                   # Unit tests
+│   ├── __init__.py
+│   └── test_speedtest.py    # Test cases
+├── activate_project.bat     # Windows CMD activation script
+├── activate_project.ps1     # Windows PowerShell activation script
+├── activate_project.sh      # Linux/macOS activation script
 ├── LICENSE                  # License file
 ├── README.md                # Documentation
-├── requirements.txt         # List of dependencies
+├── requirements.txt         # Python dependencies
 ├── runtime.txt              # Python runtime version
+├── speed_results.db         # SQLite database storing results
 └── workspace.code-workspace # VS Code workspace file
 ```
 
-## Usage
-### Activating the Virtual Environment
-Once activated, you should see a modified prompt:
+## Running Tests
+To validate database and speed test functionality, run:
 ```bash
-(venv) user@machine:~/venv$
-```
-
-### Installing Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### Deactivating the Virtual Environment
-To exit:
-```bash
-deactivate
+pytest tests/
 ```
 
 ## Troubleshooting
@@ -122,7 +95,7 @@ deactivate
 - **Permission issues (Linux/macOS)**: Use `chmod +x activate_project.sh` to grant execution permissions.
 
 ## Contribution
-Submit pull requests or report issues on the [GitHub repository](https://github.com/TamerOnLine/venv).
+Submit pull requests or report issues on the [GitHub repository](https://github.com/TamerOnLine/speed_net).
 
 ## License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
